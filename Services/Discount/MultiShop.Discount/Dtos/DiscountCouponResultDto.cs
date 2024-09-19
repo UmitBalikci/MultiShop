@@ -1,7 +1,8 @@
 ﻿namespace MultiShop.Discount.Dtos
 {
-    public class CouponCreateDto
+    public class DiscountCouponResultDto
     {
+        public Guid CouponID { get; set; }
         public string Code { get; set; }
         public int? Rate { get; set; }
         public bool? IsActive { get; set; }
