@@ -19,7 +19,7 @@ namespace MultiShop.Discount.Controllers
         [HttpGet]
         public async Task<ActionResult> DiscountCouponList()
         {
-            var result = _discountService.GetAllDiscountCouponAsync();
+            var result = await _discountService.GetAllDiscountCouponAsync();
 
             return Ok(result);
         }
@@ -27,7 +27,7 @@ namespace MultiShop.Discount.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetDiscountCouponByID(Guid id)
         {
-            var result = _discountService.GetDiscountCouponDetailAsync(id);
+            var result = await _discountService.GetDiscountCouponDetailAsync(id);
 
             return Ok(result);
         }

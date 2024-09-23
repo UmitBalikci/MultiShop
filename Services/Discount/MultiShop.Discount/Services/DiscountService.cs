@@ -18,6 +18,7 @@ namespace MultiShop.Discount.Services
 
             var parameters = new DynamicParameters();
 
+            parameters.Add("@CouponID", Guid.NewGuid());
             parameters.Add("@Code", couponCreateDto.Code);
             parameters.Add("@Rate", couponCreateDto.Rate);
             parameters.Add("@IsActive", couponCreateDto.IsActive);
@@ -31,7 +32,7 @@ namespace MultiShop.Discount.Services
 
         public async Task DeleteDiscountCouponAsync(Guid couponID)
         {
-            string query = "Delete From Coupon Where CouponID = @CouponID";
+            string query = "Delete From Coupons Where CouponID = @CouponID";
 
             var parameters = new DynamicParameters();
 
@@ -65,7 +66,7 @@ namespace MultiShop.Discount.Services
 
             using (var connection = _dapperContext.CreateConnection())
             {
-                var value = await connection.QueryFirstOrDefaultAsync<DiscountCouponDetailDto>(query);
+                var value = await connection.QueryFirstOrDefaultAsync<DiscountCouponDetailDto>(query, parameters);
 
                 return value;
             }
@@ -82,7 +83,6 @@ namespace MultiShop.Discount.Services
             parameters.Add("@Rate", couponUpdateDto.Rate);
             parameters.Add("@IsActive", couponUpdateDto.IsActive);
             parameters.Add("@ValidDate", couponUpdateDto.ValidDate);
-            parameters.Add("@CouponID", couponUpdateDto.CouponID);
 
             using (var connection = _dapperContext.CreateConnection())
             {
