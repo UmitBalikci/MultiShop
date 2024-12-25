@@ -16,6 +16,7 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers
         public async Task Handle(DeleteAddressCommand command)
         {
             var value = await _repository.GetByIDAsync(command.AddressID);
+
             await _repository.DeleteAsync(value);
         }
     }
