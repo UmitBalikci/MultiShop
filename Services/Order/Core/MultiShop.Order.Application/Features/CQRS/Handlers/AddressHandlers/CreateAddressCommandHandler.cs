@@ -17,6 +17,7 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers
         {
             await _repository.CreateAsync(new Address
             {
+                AddressID = Guid.NewGuid(),
                 City = createAddressCommand.City,
                 District = createAddressCommand.District,
                 Detail = createAddressCommand.Detail,
