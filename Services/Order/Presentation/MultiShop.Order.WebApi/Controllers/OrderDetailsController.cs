@@ -35,7 +35,7 @@ namespace MultiShop.Order.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{Guid:id}")]
+        [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetOrderDetailByID(Guid id)
         {
             var result = await _getOrderDetailByIDQueryHandler.Handle(new GetOrderDetailByIDQuery(id));
@@ -59,7 +59,7 @@ namespace MultiShop.Order.WebApi.Controllers
             return Ok("Order Detail güncelleme işlemi başarılı!");
         }
 
-        [HttpDelete("{Guid:id}")]
+        [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> DeleteOrderDetail(Guid id)
         {
             await _deleteOrderDetailCommandHandler.Handle(new DeleteOrderDetailCommand(id));
